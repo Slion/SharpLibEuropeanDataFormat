@@ -205,7 +205,7 @@ namespace SharpLib.EuropeanDataFormat
         private Double ReadDouble(Field itemInfo)
         {
             String value = ReadAscii(itemInfo).Trim();
-            if (Double.TryParse(value, out var result) {
+            if (Double.TryParse(value, out var result)) {
                 return result;
             } else {
                 return -1;
