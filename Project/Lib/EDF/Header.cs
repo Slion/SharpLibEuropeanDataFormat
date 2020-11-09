@@ -181,7 +181,7 @@ namespace SharpLib.EuropeanDataFormat
         public FixedLengthInt SizeInBytes { get; private set; } = new FixedLengthInt(HeaderItems.SizeInBytes);
         public FixedLengthString Reserved { get; private set; } = new FixedLengthString(HeaderItems.Reserved);
         public FixedLengthInt RecordCount { get; private set; } = new FixedLengthInt(HeaderItems.NumberOfDataRecords);
-        public FixedLengthInt RecordDurationInSeconds { get; private set; } = new FixedLengthInt(HeaderItems.RecordDurationInSeconds);
+        public FixedLengthDouble RecordDurationInSeconds { get; private set; } = new FixedLengthDouble(HeaderItems.RecordDurationInSeconds);
         public FixedLengthInt SignalCount { get; private set; } = new FixedLengthInt(HeaderItems.SignalCount);
 
         public class Signal
