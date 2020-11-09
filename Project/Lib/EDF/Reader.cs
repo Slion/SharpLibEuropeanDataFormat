@@ -205,9 +205,10 @@ namespace SharpLib.EuropeanDataFormat
         private Double ReadDouble(Field itemInfo)
         {
             String value = ReadAscii(itemInfo).Trim();
-            if (Double.TryParse(value, out var result)) {
-                return result;
-            } else {
+            try {
+                return Double.Parse(value, CultureInfo.InvariantCulture);
+            } catch (FormatExcepection ex) {
+                Console.WriteLine("Error, could not convert string to integer: " + ex.Message);
                 return -1;
             }
         }
