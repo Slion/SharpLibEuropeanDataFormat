@@ -27,7 +27,7 @@ namespace SharpLib.EuropeanDataFormat
             h.SizeInBytes.Value = ReadInt16(HeaderItems.SizeInBytes);
             h.Reserved.Value = ReadAscii(HeaderItems.Reserved);
             h.RecordCount.Value = ReadInt16(HeaderItems.NumberOfDataRecords);
-            h.RecordDurationInSeconds.Value = ReadInt16(HeaderItems.RecordDurationInSeconds);
+            h.RecordDurationInSeconds.Value = ReadDouble(HeaderItems.RecordDurationInSeconds);
             h.SignalCount.Value = ReadInt16(HeaderItems.SignalCount);
 
             // Variable size header
@@ -200,6 +200,16 @@ namespace SharpLib.EuropeanDataFormat
             try { intResult = Convert.ToInt16(strInt); }
             catch (Exception ex) { Console.WriteLine("Error, could not convert string to integer. " + ex.Message); }
             return intResult;
+        }
+        
+        private Double ReadDouble(Field itemInfo)
+        {
+            String value = ReadAscii(itemInfo).Trim();
+            if (Double.TryParse(value, out var result) {
+                return result;
+            } else {
+                return -1;
+            }
         }
 
         private string ReadAscii(Field itemInfo)
