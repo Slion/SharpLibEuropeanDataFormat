@@ -207,7 +207,7 @@ namespace SharpLib.EuropeanDataFormat
             String value = ReadAscii(itemInfo).Trim();
             try {
                 return Double.Parse(value, CultureInfo.InvariantCulture);
-            } catch (FormatExcepection ex) {
+            } catch (FormatException ex) {
                 Console.WriteLine("Error, could not convert string to integer: " + ex.Message);
                 return -1;
             }
