@@ -79,7 +79,7 @@ namespace SharpLib.EuropeanDataFormat
         {
             string asciiString = "";
             if (Value != null)
-                asciiString = Value.ToString().PadRight(AsciiLength, ' ');
+                asciiString = Value.ToString(CultureInfo.InvariantCulture).PadRight(AsciiLength, ' ');
             else
                 asciiString = asciiString.PadRight(AsciiLength, ' ');
 
@@ -97,11 +97,11 @@ namespace SharpLib.EuropeanDataFormat
             string asciiString = "";
             if (Value != null)
             {
-                asciiString = Value.ToString();
+                asciiString = Value.ToString(CultureInfo.InvariantCulture);
                 if (asciiString.Length >= AsciiLength)
                     asciiString = asciiString.Substring(0, AsciiLength);
                 else
-                    asciiString = Value.ToString().PadRight(AsciiLength, ' ');
+                    asciiString = Value.ToString(CultureInfo.InvariantCulture).PadRight(AsciiLength, ' ');
             }
                 
             else
@@ -139,7 +139,7 @@ namespace SharpLib.EuropeanDataFormat
             string ascii = "";
             foreach (var intVal in Value)
             {
-                string temp = intVal.ToString();
+                string temp = intVal.ToString(CultureInfo.InvariantCulture);
                 if (temp.Length > AsciiLength)
                     temp = temp.Substring(0, AsciiLength);
                 ascii += temp;
@@ -157,7 +157,7 @@ namespace SharpLib.EuropeanDataFormat
             string ascii = "";
             foreach (var doubleVal in Value)
             {
-                string temp = doubleVal.ToString();
+                string temp = doubleVal.ToString(CultureInfo.InvariantCulture);
                 if (temp.Length > AsciiLength)
                     temp = temp.Substring(0, AsciiLength);
                 ascii += temp;
