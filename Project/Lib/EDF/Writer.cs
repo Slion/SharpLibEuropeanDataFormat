@@ -40,8 +40,7 @@ namespace SharpLib.EuropeanDataFormat
 
             Console.WriteLine("Writer position after header: " + BaseStream.Position);
             Console.WriteLine("Writing signals.");
-            //TODO: Missing for each record loop, see fixed reading code
-            foreach (var sig in edf.Signals) WriteSignal(sig);
+            WriteSignals(edf.Signals, edf.Header);
 
             Close();
             Console.WriteLine("File size: " + System.IO.File.ReadAllBytes(edfFilePath).Length);
@@ -61,7 +60,7 @@ namespace SharpLib.EuropeanDataFormat
             if (strItem == null) strItem = "";
             byte[] itemBytes = AsciiToBytes(strItem);
             this.Write(itemBytes);
-            Console.WriteLine(headerItem.Name + " [" + strItem + "] \n\n-- ** BYTES LENGTH: " + itemBytes.Length 
+            Console.WriteLine(headerItem.Name + " [" + strItem + "] \n\n-- ** BYTES LENGTH: " + itemBytes.Length
                 + "> Position after write item: " + this.BaseStream.Position + "\n");
         }
 
@@ -71,7 +70,7 @@ namespace SharpLib.EuropeanDataFormat
             if (joinedItems == null) joinedItems = "";
             byte[] itemBytes = AsciiToBytes(joinedItems);
             this.Write(itemBytes);
-            Console.WriteLine("[" + joinedItems + "] \n\n-- ** BYTES LENGTH: " + itemBytes.Length 
+            Console.WriteLine("[" + joinedItems + "] \n\n-- ** BYTES LENGTH: " + itemBytes.Length
                 + " Position after write item: " + this.BaseStream.Position + "\n");
         }
 
@@ -101,14 +100,31 @@ namespace SharpLib.EuropeanDataFormat
             return Encoding.ASCII.GetBytes(strInt);
         }
 
-        public void WriteSignal(Signal signal)
+        public void WriteSignals(Signal[] signals, Header header)
         {
-            Console.WriteLine("Write position before signal: " + this.BaseStream.Position);
-            for (int i = 0; i < signal.SampleCountPerRecord.Value; i++)
+            if (!signals.Any())
             {
-                this.Write(BitConverter.GetBytes(signal.Samples[i]));
+                Console.WriteLine("There are no signals to write");
+                return;
             }
-            Console.WriteLine("Write position after signal: " + this.BaseStream.Position);
+
+            Console.WriteLine("Write position before signal: " + this.BaseStream.Position);
+
+            int numberOfRecords = header.RecordCount.Value;
+            for (int recordIndex = 0; recordIndex < numberOfRecords; recordIndex++)
+            {
+                foreach (Signal signal in signals)
+                {
+                    int signalStartPos = recordIndex * signal.SampleCountPerRecord.Value;
+                    int signalEndPos = Math.Min(signalStartPos + signal.SampleCountPerRecord.Value, signal.Samples.Count);
+                    for (; signalStartPos < signalEndPos; signalStartPos++)
+                    {
+                        this.Write(BitConverter.GetBytes(signal.Samples[signalStartPos]));
+                    }
+                }
+
+            }
+            Console.WriteLine("Write position after signals: " + this.BaseStream.Position);
         }
     }
 }
