@@ -85,7 +85,7 @@ namespace SharpLib.EuropeanDataFormat
             WriteSignals(edf);
 
             Close();
-            Console.WriteLine("File size: " + System.IO.File.ReadAllBytes(edfFilePath).Length);
+            Console.WriteLine("File size: " + new System.IO.FileInfo(edfFilePath).Length);
         }
 
 
