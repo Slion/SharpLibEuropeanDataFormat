@@ -26,7 +26,7 @@ namespace SharpLib.EuropeanDataFormat
             h.RecordingStartTime.Value = ReadAscii(HeaderItems.RecordingStartTime);
             h.SizeInBytes.Value = ReadInt16(HeaderItems.SizeInBytes);
             h.Reserved.Value = ReadAscii(HeaderItems.Reserved);
-            h.RecordCount.Value = ReadInt16(HeaderItems.NumberOfDataRecords);
+            h.RecordCount.Value = ReadInt32(HeaderItems.NumberOfDataRecords);
             h.RecordDurationInSeconds.Value = ReadDouble(HeaderItems.RecordDurationInSeconds);
             h.SignalCount.Value = ReadInt16(HeaderItems.SignalCount);
 
@@ -201,7 +201,16 @@ namespace SharpLib.EuropeanDataFormat
             catch (Exception ex) { Console.WriteLine("Error, could not convert string to integer. " + ex.Message); }
             return intResult;
         }
-        
+
+        private Int32 ReadInt32(Field itemInfo)
+        {
+            string strInt = ReadAscii(itemInfo).Trim();
+            Int32 intResult = -1;
+            try { intResult = Convert.ToInt32(strInt); }
+            catch (Exception ex) { Console.WriteLine("Error, could not convert string to integer. " + ex.Message); }
+            return intResult;
+        }
+
         private Double ReadDouble(Field itemInfo)
         {
             String value = ReadAscii(itemInfo).Trim();
