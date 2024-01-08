@@ -1,6 +1,7 @@
 [![NuGet Badge](https://buildstats.info/nuget/SharpLibEuropeanDataFormat)](https://www.nuget.org/packages/SharpLibEuropeanDataFormat/)
 [![Build](https://github.com/Slion/SharpLibEuropeanDataFormat/actions/workflows/build.yml/badge.svg)](https://github.com/Slion/SharpLibEuropeanDataFormat/actions/workflows/build.yml) 
 [![Publish](https://github.com/Slion/SharpLibEuropeanDataFormat/actions/workflows/publish.yml/badge.svg)](https://github.com/Slion/SharpLibEuropeanDataFormat/actions/workflows/publish.yml)
+[![License](https://img.shields.io/github/license/Slion/SharpLibEuropeanDataFormat)](LICENSE.md)
 
 ![EDF file icon](Doc/edf_icon.png?raw=true "EDF file icon")
 

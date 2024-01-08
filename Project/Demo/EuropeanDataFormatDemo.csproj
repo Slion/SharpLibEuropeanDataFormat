@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>SharpLib.EuropeanDataFormat</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lib\SharpLibEuropeanDataFormat.csproj" />

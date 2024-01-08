@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net48;net6.0;net7.0;net8.0</TargetFrameworks>
+    <LangVersion>12</LangVersion>
+    <IsPackable>true</IsPackable>
     <PackageId>SharpLibEuropeanDataFormat</PackageId>
     <OutputType>Library</OutputType>
     <RootNamespace>SharpLib.EuropeanDataFormat</RootNamespace>
@@ -15,6 +17,7 @@
     <PackageProjectUrl>https://github.com/Slion/SharpLibEuropeanDataFormat</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeContentInPack>true</IncludeContentInPack>
     <PackageTags>Windows;Windows10;Windows11;Medicine;EDF;</PackageTags>
     <Title>European Data Format Library (EDF)</Title>
     <RepositoryType>git</RepositoryType>
@@ -42,5 +45,17 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../LICENSE.md">
+      <Pack>true</Pack>
+      <PackagePath></PackagePath>
+      <Visible>True</Visible>
+    </None>
+    <None Include="../../README.md">
+      <Pack>true</Pack>
+      <PackagePath></PackagePath>
+      <Visible>True</Visible>
+    </None>
   </ItemGroup>
 </Project>

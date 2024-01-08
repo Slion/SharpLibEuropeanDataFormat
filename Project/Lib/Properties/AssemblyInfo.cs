@@ -1,36 +1,68 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("SharpLibEuropeanDataFormat")]
-[assembly: AssemblyDescription("Read and write EDF signal files.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Slions")]
-[assembly: AssemblyProduct("SharpLibEuropeanDataFormat")]
-[assembly: AssemblyCopyright("Copyright ©  2016 - 2018")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(true)]
+[assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("7e8b16eb-eb43-4a0f-b4aa-d00bfe41ebe2")]
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+namespace WindowsDesktop.Properties;
+
+internal static class AssemblyInfo
+{
+    private static readonly Assembly _assembly = Assembly.GetExecutingAssembly();
+    private static string? _title;
+    private static string? _description;
+    private static string? _company;
+    private static string? _product;
+    private static string? _copyright;
+    private static string? _trademark;
+    private static string? _versionString;
+
+    public static string Title
+        => _title ??= Prop<AssemblyTitleAttribute>(x => x.Title);
+
+    public static string Description
+        => _description ??= Prop<AssemblyDescriptionAttribute>(x => x.Description);
+
+    public static string Company
+        => _company ??= Prop<AssemblyCompanyAttribute>(x => x.Company);
+
+    public static string Product
+        => _product ??= Prop<AssemblyProductAttribute>(x => x.Product);
+
+    public static string Copyright
+        => _copyright ??= Prop<AssemblyCopyrightAttribute>(x => x.Copyright);
+
+    public static string Trademark
+        => _trademark ??= Prop<AssemblyTrademarkAttribute>(x => x.Trademark);
+
+    public static Version Version
+        => _assembly.GetName().Version ?? new Version();
+
+    public static string VersionString
+        => _versionString ??= Version.ToString(3);
+
+    private static string Prop<T>(Func<T, string> propSelector)
+        where T : Attribute
+    {
+        var attribute = _assembly.GetCustomAttribute<T>();
+        return attribute != null ? propSelector(attribute) : "";
+    }
+}
+
+internal static class LocationInfo
+{
+    private static DirectoryInfo? _localAppData;
+
+    internal static DirectoryInfo LocalAppData
+        => _localAppData ??= new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), AssemblyInfo.Company, AssemblyInfo.Product));
+}
+
