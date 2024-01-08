@@ -1,8 +1,6 @@
-<p align="left">
 [![NuGet Badge](https://buildstats.info/nuget/SharpLibEuropeanDataFormat)](https://www.nuget.org/packages/SharpLibEuropeanDataFormat/)
 [![Build](https://github.com/Slion/SharpLibEuropeanDataFormat/actions/workflows/build.yml/badge.svg)](https://github.com/Slion/SharpLibEuropeanDataFormat/actions/workflows/build.yml) 
 [![Publish](https://github.com/Slion/SharpLibEuropeanDataFormat/actions/workflows/publish.yml/badge.svg)](https://github.com/Slion/SharpLibEuropeanDataFormat/actions/workflows/publish.yml)
-</p>
 
 ![EDF file icon](Doc/edf_icon.png?raw=true "EDF file icon")
 
