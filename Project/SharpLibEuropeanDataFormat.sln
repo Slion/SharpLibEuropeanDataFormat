@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpLibEuropeanDataFormat", "Lib\SharpLibEuropeanDataFormat.csproj", "{7E8B16EB-EB43-4A0F-B4AA-D00BFE41EBE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpLibEuropeanDataFormat", "Lib\SharpLibEuropeanDataFormat.csproj", "{7E8B16EB-EB43-4A0F-B4AA-D00BFE41EBE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuropeanDataFormatDemo", "Demo\EuropeanDataFormatDemo.csproj", "{73ACE459-8CE0-4D90-95EE-A9B3543E183F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EuropeanDataFormatDemo", "Demo\EuropeanDataFormatDemo.csproj", "{73ACE459-8CE0-4D90-95EE-A9B3543E183F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuropeanDataFormatTests", "Tests\EuropeanDataFormatTests.csproj", "{077F4371-C947-4193-AB00-7EE21365C79C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EuropeanDataFormatTests", "Tests\EuropeanDataFormatTests.csproj", "{077F4371-C947-4193-AB00-7EE21365C79C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
