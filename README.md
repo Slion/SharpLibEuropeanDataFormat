@@ -52,3 +52,8 @@ The easiest way to make use of this library in your own project is to add a refe
 |.. | |
 |.. | |
 |nr of samples[ns] * integer | last signal |
+
+# Publish
+
+To publish a new release specify your version in `Project\Lib\SharpLibEuropeanDataFormat.csproj` and push the changes with a commit description such as: Release vx.y.z where x, y, z form your version number.
+That should publish it on NuGet providing that your secret NUGET_API_KEY is still valid.
